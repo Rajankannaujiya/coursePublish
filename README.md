@@ -50,12 +50,9 @@ pnpm install
 
 3. Set environment variables
 
+set from the .env.example
 ```bash
-DATABASE_URL=postgresql://user:password@localhost:5432/yourdb
-NEXTAUTH_SECRET=your-secret
-NEXTAUTH_URL=http://localhost:3000
-CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
-REDIS_URL=redis://localhost:6379
+cp .env.example .env
 ```
 
 4. Run migrations
@@ -67,6 +64,10 @@ npx prisma migrate dev
 ```bash
 pnpm dev
 ```
+6. you can also do, if you do this ignore step 4 and 5
+```bash
+sudo docker compose up --build
+```
 
-6. Visite App
+7. Visite App
 Open http://localhost:3000 in your browser.
