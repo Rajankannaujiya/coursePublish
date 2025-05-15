@@ -72,5 +72,5 @@ pnpm dev
 Open http://localhost:3000 in your browser.
 
 
-🤝 Contributing
+## 🤝 Contributing
 Contributions are welcome! Feel free to submit issues or pull requests.
