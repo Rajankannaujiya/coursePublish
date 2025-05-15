@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+//  binaryTargets = ["native","linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+  model User {
+    id       String   @id @unique @default(uuid())
+    email    String
+    name     String
+    password String?
+    role     Role     @default(USER)
+    provider Provider?
+    profile  Profile?
+    course   Course[] @relation("EnrolledUser")
+    certificate Certificate[]
+    instructorProfile Instructor?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+}
+
+model Profile {
+  id     String    @id @default(uuid())
+  bio    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+  imageUrl String
+}
+
+model Course {
+  id           String     @id @default(uuid())
+  title        String
+  imageUrl     String
+  description  String
+  instructor   Instructor? @relation(fields: [instructorId], references: [id])
+  instructorId String?
+  enrolledUsers User[] @relation("EnrolledUser")
+  cetificate   Certificate[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Instructor {
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String   @unique
+  workExp    Int?
+  profession String
+  courses    Course[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CompanyBrand {
+  id  String @id @default(uuid())
+  bName String @unique
+  bLogo String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Certificate{
+  id String @id @default(uuid())
+  user User @relation(fields: [userId], references: [id])
+  userId String
+  course Course @relation(fields: [courseId], references: [id])
+  courseId String @unique
+  hash String @unique
+
+  userName   String
+  courseTitle String
+  issuedAt   DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+@@unique([userId, courseId])
+}
+
+
+enum Role {
+  USER
+  ADMIN
+  INSTRUCTOR
+}
+
+enum Provider {
+  CREDENTIALS
+  GOOGLE
+  TWITTER
+}
