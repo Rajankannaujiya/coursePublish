@@ -50,7 +50,8 @@ jobs:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
 
-      - name: Install pnpm (if needed)
+      - name: Install pnpm
+        if: ${{ steps.detect-package-manager.outputs.manager == 'pnpm' }}
         run: npm install -g pnpm
 
       - name: Setup GitHub Pages
@@ -71,7 +72,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build and export Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} run build
+        run: ${{ steps.detect-package-manager.outputs.runner }} run build && ${{ steps.detect-package-manager.outputs.runner }} run export
 
       - name: Upload static site artifact
         uses: actions/upload-pages-artifact@v3
