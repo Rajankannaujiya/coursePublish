@@ -8,7 +8,7 @@ import { Input } from "@/app/components/Input";
 
 import { useState, useEffect } from "react";
 
-export default function SearchPageUser() {
+export default function page() {
   const router = useRouter();
   const fetchResultData = async (query: string) => {
     const res = await fetch(`/api/users/search?q=${query}`);
