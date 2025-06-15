@@ -109,7 +109,7 @@ export default function AddCourse() {
             className='border-2 border-midnight-blue-800 p-2 w-full hover:border-midnight-blue-400 rounded-md'
           >
             <option value="">Select an instructor</option> {/* Default empty option */}
-            {Array.isArray(data) && data.map((instructor) => (
+            {Array.isArray(data) && data.map((instructor:any) => (
               <option 
                 key={instructor?.id}
                 value={instructor?.id}

@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     const session = await getServerSession(authOptions);
 
     if (!session || !session?.user.id ) {
-      return { error: "unauthorized" };
+      return NextResponse.json({ error: "unauthorized" });
     }
   
     const { userId, bio, imageUrl } = await request.json();
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
         console.log("I am here")
 
         if (!session || !session?.user.id ) {
-        return { error: "unauthorized" };
+        return NextResponse.json({ error: "unauthorized" });
         }
     
         const { searchParams } = new URL(request.url);

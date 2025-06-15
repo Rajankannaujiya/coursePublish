@@ -52,7 +52,7 @@ export default function EnrolledCourses() {
       <h2 className="text-2xl font-semibold text-gray-800">Enrolled Courses</h2>
   
       {courses && courses.length > 0 ? (
-        courses.map((course, index) => (
+        courses.map((course:any, index) => (
           <div
             key={index}
             className="bg-white shadow-md rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition duration-300 cursor-pointer"

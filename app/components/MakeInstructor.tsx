@@ -66,7 +66,7 @@ const MakeInstructor = () => {
       setUserName('')
       setWorkExperience(0)
       router.push('/')
-    } catch (err) {
+    } catch (err:any) {
       setError(err.message || 'Something went wrong')
     } finally {
       setIsSubmitting(false)
@@ -107,7 +107,7 @@ const MakeInstructor = () => {
             <div className="absolute z-10 mt-1 w-full bg-midnight-blue-50 border border-midnight-blue-300 rounded-md shadow-lg scroll-auto overflow-y-auto">
               <GenericSearch
                 fetchResults={fetchResultData}
-                renderResult={(user, index) => (
+                renderResult={(user:any, index) => (
                   <div 
                     key={index} 
                     className="p-3 hover:bg-midnight-blue-50 cursor-pointer"

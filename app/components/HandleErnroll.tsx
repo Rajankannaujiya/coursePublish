@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "../../components/Button";
+import { Button } from "./Button";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { ErrorComp } from "@/app/components/ErrorComp";
@@ -10,7 +10,7 @@ interface Enroll {
   courseId: string;
 }
 
-export const HandleEnroll = ({ courseId }: Enroll) => {
+export default  function HandleEnroll ({ courseId }: Enroll) {
   const session = useSession();
   const [error, setError] = useState('');
   const [alreadyEnrolled, setAlreadyEnrolled] = useState(false);

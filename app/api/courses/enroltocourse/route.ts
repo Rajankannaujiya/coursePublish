@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const course = await prisma.course.findUnique({ where: { id: courseId } });
 
     if (!user || !course) {
-      return { error: "User or course not found" };
+      return NextResponse.json({ error: "User or course not found" });
     }
    await prisma.$transaction([
 
@@ -36,7 +36,6 @@ export async function POST(request: NextRequest) {
     })
    ])
 
-  
 
     return NextResponse.json({ success: true,  status:200});
   } catch (error) {
