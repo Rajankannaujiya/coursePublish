@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
 
   if (!session || !session?.user.id) {
-    return { error: "unauthorized" };
+    return NextResponse.json({ error: "unauthorized" });
   }
 
   const { userId, bio, imageUrl } = await request.json();

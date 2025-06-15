@@ -19,7 +19,7 @@ const UploadImagComp = ({
     <div className="w-full m-0 p-0">
       <CldUploadWidget
         {...cloudinaryConfig}
-        onSuccess={(result) => {
+        onSuccess={(result:any) => {
           if (result?.event === "success") {
             console.log("this is the result", result.info);
             setimageUrl(result?.info?.secure_url);

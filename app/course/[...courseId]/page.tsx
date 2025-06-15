@@ -4,7 +4,7 @@ import SingleInstructor from "@/app/components/SingleInstructor";
 import Image from "next/image";
 import React from "react";
 import { Button } from "../../components/Button"
-import { HandleEnroll } from "../enrollusertocourse/page";
+import HandleEnroll from "../../components/HandleErnroll";
 import { UpdateButton } from "@/app/components/DeleteCourseComp";
 
 const page = async ({ params }: { params: Promise<{ courseId: string }> }) => {

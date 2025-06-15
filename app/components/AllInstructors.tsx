@@ -26,7 +26,7 @@ const AllInstructors = () => {
         </div>
     <div className='flex w-full flex-col m-2 p-2'>
     {
-        Array.isArray(data) && data.length>0 && data?.map((instructor)=>(
+        Array.isArray(data) && data.length>0 && data?.map((instructor:any)=>(
           <div key={Math.random()} className='w-full border-b-2 border-gray-400'>
             <DisplayComp name={instructor.user.name} role={instructor.user.role}/>
           </div>

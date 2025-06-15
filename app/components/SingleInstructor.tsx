@@ -17,7 +17,7 @@ const SingleInstructor = ({ instructorId }: { instructorId: string | null }) => 
 
     useEffect(() => {
         if (Array.isArray(data) && data.length > 0) {
-            const foundInstructor = data.find(i => i.id === instructorId);
+            const foundInstructor:any = data.find((i: any)=> i.id === instructorId);
             setInstructor(foundInstructor?.user.name || "Instructor not found");
         }
     }, [data, instructorId]); // Only run when data or instructorId changes

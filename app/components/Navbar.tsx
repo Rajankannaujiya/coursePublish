@@ -2,7 +2,7 @@
 
 import { signIn, useSession } from 'next-auth/react'
 import React from 'react'
-import SearchPage, { SearchPageCourse } from '../(dashboard)/admin/search/page'
+import { SearchPageCourse } from '../(dashboard)/components/searchCourse' 
 import { Button } from './Button'
 import Avatar from './Avatar'
 

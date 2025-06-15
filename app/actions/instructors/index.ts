@@ -10,7 +10,6 @@ import {
   TypeInstructorIdSchema,
   TypeUpdateUserToInstructorSchema,
 } from "./types";
-// import { TypeInstructorsSchema } from "@/app/lib/globalType";
 
 export const updateUserToInstructor = async (data: TypeUpdateUserToInstructorSchema) => {
   console.log(data)
@@ -30,7 +29,7 @@ export const updateUserToInstructor = async (data: TypeUpdateUserToInstructorSch
   if (!userId) return { error: "userId is required to make a user Instructor" };
 
   try {
-    const user = await prisma.$transaction(async (prisma) => {
+    await prisma.$transaction(async (prisma) => {
       await prisma.user.update({
         where: {
           id: userId,
