@@ -4,7 +4,7 @@
 import GenericSearch from "@/app/components/SearchComp";
 import { useRouter } from "next/navigation";
 
-export default function page() {
+export default function Page() {
   const router = useRouter();
   const fetchResultData = async (query: string) => {
     const res = await fetch(`/api/users/search?q=${query}`);
