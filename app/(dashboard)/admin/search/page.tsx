@@ -20,7 +20,7 @@ export default function SearchPageUser() {
   return (
     <GenericSearch
       fetchResults={fetchResultData}
-      renderResult={(user, index) => (
+      renderResult={(user:any, index) => (
         <div
           key={index}
           className="flex justify-between items-center gap-3 cursor-pointer"
@@ -96,7 +96,7 @@ export const SearchPageCourse = () => {
       {error && <ErrorComp error={error} />}
       {results.length > 0 && (
         <div className="absolute mt-1 md:w-lg bg-white border border-gray-200 rounded-md divide-y shadow-lg z-50 max-h-80 overflow-y-auto">
-          {results.map((course) => (
+          {results.map((course:any) => (
             <div
               key={course.id}
               className="p-2 hover:bg-gray-100 border-b-2 border-midnight-blue-950 cursor-pointer"

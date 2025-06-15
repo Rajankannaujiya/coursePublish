@@ -73,6 +73,7 @@ function GenericSearch<T>({
     
     try {
       const data = await fetchResults(searchQuery)
+      console.log(data)
       setResults(data)
     } catch (err) {
       setError('Failed to fetch results')
